@@ -1,0 +1,18 @@
+.post-btn {
+  width: 120px;
+  background: rgba(55, 28, 28, 0.9);
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+}
+
+.post {
+  color: #fff;
+  font-size: 25px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  width: 60%;
+}
