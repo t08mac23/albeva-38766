@@ -1,5 +1,5 @@
 .login-btn {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   margin-top: 80px;
 }
@@ -7,7 +7,7 @@
 .login-color-btn {
   width: 100%;
   background-color: rgb(15, 13, 77);
-  border: 1px solid black;
+  border: 3px solid black;
   color: rgba(232, 215, 215, 0.9);
   text-shadow: 0 0 5px rgba(6, 81, 255, 0.9);
   line-height: 48px;
@@ -16,6 +16,18 @@
 }
 
 .back-btn {
+  width: 100%;
+  background-color: rgb(15, 13, 77);
+  border: 1px solid black;
+  color: rgba(232, 215, 215, 0.9);
+  text-shadow: 0 0 5px rgba(6, 81, 255, 0.9);
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.new-login-btn {
   width: 100%;
   background-color: rgb(15, 13, 77);
   border: 1px solid black;
