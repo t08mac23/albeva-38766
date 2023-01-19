@@ -1,2 +1,81 @@
-<h1>Drinks#index</h1>
-<p>Find me in app/views/drinks/index.html.erb</p>
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+      Welcom to "ALBEVA"
+    </h2>
+    <p class='service-explain'>
+      "アルベバ"で美味しい自分だけのお酒を見つけよう
+    </p>
+    <p class='service-explain'>
+      初めてでも簡単にカクテルが作れちゃうアプリです
+    </p>
+  </div>
+  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
+
+
+  <%# 一覧 %>
+  <div class='post-contents'>
+    <h2 class='title'>＃CHEERS</h2>
+    <div class="subtitle" >
+      新規投稿
+    </div>
+    <ul class='post-lists'>
+
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <li class='list'>
+        <%= link_to "#" do %>
+        <div class='post-img-content'>
+          <%= image_tag "25349556_s.jpg", class: "post-img" %>
+
+        </div>
+        <div class='post-info'>
+          <h3 class='post-name'>
+            <%= "名前(beer)" %>
+          </h3>
+          <div class='post-user'>
+            <span><%= "nickname" %></span>
+            <%# <div class='star-btn'> %>
+              <%# <%= image_tag "25349556_s.jpg", class:"star-icon" %> 
+              <%# <span class='star-count'>0</span> %>
+            <%# </div> %>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+    </ul>
+  </div>
+  <%# /一覧 %>
+</div>
+
+<%= link_to('#', class: 'post-btn') do %>
+  <span class='post'>乾杯</span>
+<% end %>
+
+<%= render "shared/footer" %>
+
+<section class="wrapper">
+  <div class="container">
+      <div class="content">
+          <h2 class="heading">ABOUT US</h2>
+          <div class="list">
+              <div class="list-item">
+                  <%= image_tag "25349556_s.jpg", class:"list-pict" %>
+                  <div class="text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+              </div>
+              <div class="list-item">
+                  <%= image_tag "25184104_s.jpg", class:"list-pict" %>
+                  <div class="text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+              </div>    
+              <div class="list-item">
+                  <%= image_tag "25167043_s.jpg", class:"list-pict" %>
+                  <div class="text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
