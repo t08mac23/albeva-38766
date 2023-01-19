@@ -1,13 +1,4 @@
-<%# 下部広告部分 %>
-<div class='ad-footer-contents'>
-  <p class='ad-footer-explain'>
-    みんなに自分のお酒をシェアしよう！
-  </p>
-  <h2 class='ad-footer-title'>
-    いますぐ乾杯
-  </h2>
-</div>
-<%# /下部広告部分 %>
+<%= render "shared/cheers" %>
 
 <div class='footer'>
   <div class='footer-contents'>
@@ -21,5 +12,5 @@
       <h2 class='footer-content-head'>乾杯について</h2>
     </div>
   </div>
-  <p><%= link_to "albeva", class:"footer-link"%></p>
+  <p><%= link_to "albeva", url: "#", class:"footer-link"%></p>
 </div>
