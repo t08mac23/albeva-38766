@@ -1,10 +1,9 @@
 <%= render "shared/header" %>
 <div class='main'>
 
-  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
   <div class='title-contents'>
     <h2 class='service-title'>
-      Welcom to "ALBEVA"
+      Welcome to "ALBEVA"
     </h2>
     <p class='service-explain'>
       "アルベバ"で美味しい自分だけのお酒を見つけよう
@@ -13,9 +12,6 @@
       初めてでも簡単にカクテルが作れちゃうアプリです
     </p>
   </div>
-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
-
-
 
   <%# 一覧 %>
   <div class='post-contents'>
@@ -52,7 +48,7 @@
   <%# /一覧 %>
 </div>
 
-<%= link_to('#', class: 'post-btn') do %>
+<%= link_to(new_drink_path, class: 'post-btn') do %>
   <span class='post'>乾杯</span>
 <% end %>
 
