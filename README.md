@@ -43,7 +43,7 @@ basic認証 Password:  2222
 
 
 # データベース設計  
-
+<img width="711" alt="スクリーンショット 2023-01-20 17 39 57" src="https://user-images.githubusercontent.com/118711928/213912438-fd0c7d14-d815-41da-b418-566a769e0125.png">
 
 # 画面遷移図  
 
