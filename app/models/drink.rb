@@ -6,7 +6,8 @@ class Drink < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
   belongs_to :sweet_dry
-  belongs_to :recommendation_id
+  belongs_to :recommendation
+  belongs_to :best_time
 
 
   with_options presence: true do
