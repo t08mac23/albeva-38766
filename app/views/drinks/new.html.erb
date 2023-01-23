@@ -37,7 +37,7 @@
           レシピ紹介！
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"レシピの説明（必須 1,000文字まで）（ベースのお酒、リキュールの種類、量、自分だけのオリジナリティ、注意点など)" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"レシピの説明（必須 1,000文字まで）（ベースのお酒、リキュールの種類、量、割り方、自分だけのオリジナリティやこだわり、注意点など)" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
@@ -68,10 +68,10 @@
       </div>
       <div class="form">
         <div class="weight-bold-text">
-          配送料の負担
+          初心者におすすめ度
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+        <%= f.collection_select(:recommendation_id, Recommendation.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
