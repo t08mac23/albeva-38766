@@ -11,7 +11,7 @@ class Drink < ApplicationRecord
 
 
   with_options presence: true do
-    validates :image, :name, :description
+    validates :image, :name, :alc_percent, :description
   end
 
   validates :genre_id,          numericality: { other_than: 1, message: "can't be blank" }

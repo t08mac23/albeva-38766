@@ -20,29 +20,43 @@
       新規投稿
     </div>
     <ul class='post-lists'>
-
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <li class='list'>
-        <%= link_to "#" do %>
-        <div class='post-img-content'>
-          <%= image_tag "25349556_s.jpg", class: "post-img" %>
-
-        </div>
-        <div class='post-info'>
-          <h3 class='post-name'>
-            <%= "名前(beer)" %>
-          </h3>
-          <div class='post-user'>
-            <span><%= "nickname" %></span>
-            <%# <div class='star-btn'> %>
-              <%# <%= image_tag "25349556_s.jpg", class:"star-icon" %> 
-              <%# <span class='star-count'>0</span> %>
-            <%# </div> %>
-          </div>
-        </div>
+      <% if @drinks.present? %>
+        <% @drinks.each do |drink| %>
+          <li class='list'>
+            <%= link_to "#" do %>
+              <div class='post-img-content'>
+                <%= image_tag drink.image, class: "post-img" %>
+              </div>
+              <div class='post-info'>
+                <h3 class='post-name'>
+                  <%= drink.name %>
+                </h3>
+                <div class='post-user'>
+                  <span><%= drink.user.nickname %></span>
+                </div>
+              </div>
+            <% end %>
+          </li>
         <% end %>
-      </li>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <% else %>
+        <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+        <li class='list'>
+          <%= link_to "#" do %>
+          <div class='post-img-content'>
+            <%= image_tag "25349556_s.jpg", class: "post-img" %>
+          </div>
+          <div class='post-info'>
+            <h3 class='post-name'>
+              <%= "名前(beer)" %>
+            </h3>
+            <div class='post-user'>
+              <span><%= "nickname" %></span>
+            </div>
+          </div>
+          <% end %>
+        </li>
+        <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <% end %>
     </ul>
   </div>
   <%# /一覧 %>

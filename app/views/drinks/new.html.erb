@@ -1,10 +1,10 @@
 <div class="post-cheers-contents">
   <div class="post-cheers-main">
     <h1 class="post-cheers-title">#CHEERS</h1>
-    <%= form_with local: true do |f| %>
+    <%= form_with model: @drink, url: drinks_path, local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# <%= render 'shared/error_messages', model: f.object %> 
+     <%= render 'shared/error_messages', model: f.object %> 
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 画像 %>
@@ -87,8 +87,6 @@
       </div>
     </div>
     <%# 詳細 %>
-
-
 
     <%# 下部ボタン %>
     <div class="cheers-btn-contents">
