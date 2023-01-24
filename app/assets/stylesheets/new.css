@@ -1,8 +1,8 @@
 /* border-bottom: 1px solid #eee; */
 
 
-.items-sell-contents {
-  background-color: #f5f5f5;
+.post-cheers-contents {
+  /* background-color: rgb(31, 9, 9); */
   font-family: "Source Sans Pro", Helvetica, Arial, "æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“", "YuGothic", "ãƒ¡ã‚¤ãƒªã‚ª", "Meiryo", sans-serif;
   font-size: 14px;
   display: flex;
@@ -11,27 +11,36 @@
   min-width: 500px;
 }
 
-.items-sell-header {
-  padding: 5vh 0;
-  text-align: center;
-}
-
-.items-sell-main {
-  background-color: #FFF;
-  width: 70vw;
+.post-cheers-main {
+  background-color: rgb(205, 182, 132);
+  width: 85vw;
   min-width: 450px;
   padding: 10vh 15vw;
+  border: 3px solid rgb(31, 9, 9);
 }
 
-.items-sell-title {
-  font-size: 22px;
+.post-cheers-title {
+  font-size: 50px;
   font-weight: bold;
   text-align: center;
+  font-weight: bold;
+  color: rgb(31, 9, 9);
+  text-shadow: 0 0 5px rgba(55, 28, 28, 0.9);
 }
 
 /* 共通 */
 .indispensable {
-  background: #ea352d;
+  background: maroon;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.optional {
+  background: #f98602;
   margin-left: 8px;
   padding: 3px;
   border-radius: 2px;
@@ -43,28 +52,26 @@
 .weight-bold-text {
   font-weight: bold;
   min-width: 170px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .select-box {
-  height: 30px;
+  height: 50px;
   width: 100%;
   background-color: #f5f5f5;
   padding-left: 20px;
+  border: 3px solid maroon;
 }
 
-.question {
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  background: #0099e8;
-  color: #FFF;
-  font-size: 13px;
-  text-align: center;
-  line-height: 20px;
-  text-decoration: none;
-  margin-left: 5px;
+.optional-box {
+  height: 50px;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding-left: 20px;
+  border: 3px solid #f98602;
 }
+
 
 .question-text {
   display: flex;
@@ -72,7 +79,7 @@
 
 /* /共通 */
 
-/* 商品画像 */
+/* 画像 */
 .img-upload {
   display: flex;
   justify-content: space-between;
@@ -83,60 +90,63 @@
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
+  font-size: 18px;
 }
 
 .click-upload>p {
   margin-bottom: 15px;
 }
+/* /画像 */
 
-/* /商品画像 */
-
-/* 商品名と商品説明 */
-.new-items {
+/* 名前、レシピ説明とおつまみ */
+.new-cheers {
   padding: 2vh 0;
 }
 
-.items-text {
+.cheers-text {
   width: 100%;
   padding: 16px 16px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 16px;
   resize: none;
+  margin-bottom: 30px;
+  border: 3px solid maroon;
 }
 
-.items-explain {
+.snack-text {
+  width: 100%;
+  padding: 16px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+  margin-bottom: 30px;
+  border: 3px solid #f98602;
+}
+
+.cheers-explain {
   margin-top: 2vh;
 }
 
-/* /商品名と商品説明 */
+/* /名前、レシピ説明とおつまみ */
 
-/* 商品の詳細など */
-.items-detail {
-  display: flex;
-  justify-content: space-between;
-  padding: 2vh 0;
-}
-
-.items-detail>.form {
-  width: 300px;
-  padding: 2vh 0;
-}
+/* 詳細 */
 
 .select-box {
-  margin: 2vh 0;
+  margin: 3vh 0;
 }
 
-/* /商品の詳細など */
+/* /詳細 */
 
-/* 販売価格 */
-.sell-price {
+/* 度数 */
+.cheers-alc {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.price-content {
+.alc-content {
   width: 300px;
   border-bottom: 1px solid #ccc;
   padding: 10px;
@@ -145,49 +155,41 @@
   justify-content: space-between;
 }
 
-.price-text {
+.alc-text {
   /* min-width: 170px; */
   display: flex;
   align-items: center;
+  font-size: 20px;
 }
 
-.sell-yen {
-  font-size: 18px;
+.percent {
+  font-size: 20px;
 }
 
-.price-input {
-  height: 30px;
+.alc-input {
+  height: 40px;
   text-align: right;
   padding-right: 10px;
+  border: 3px solid maroon;
 }
 
-/* /販売価格 */
+/* /度数 */
 
-/* 注意書き */
-.caution {
-  padding: 5vh 0;
-}
-
-.sentence>a {
-  color: #0099e8;
-  text-decoration: none;
-}
-
-/* /注意書き */
 
 /* 下部ボタン */
-.sell-btn-contents {
+.cheers-btn-contents {
   width: 100%;
   text-align: center;
+  margin-top: 50px;
 }
 
-.sell-btn {
-  background: #ea352d;
-  border: 1px solid #ea352d;
+.cheers-btn {
+  background: maroon;
+  border: 3px solid rgb(31, 9, 9);
   color: #fff;
   width: 100%;
-  height: 50px;
-  font-size: 14px;
+  height: 80px;
+  font-size: 25px;
   margin-bottom: 4vh;
 }
 
@@ -200,30 +202,3 @@
 }
 
 /* /下部ボタン */
-
-.items-sell-footer {
-  background-color: #f5f5f5;
-  width: 60vw;
-  padding: 3ch 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-.items-sell-footer>.menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 3vh 0;
-}
-
-.menu>li>a {
-  color: black;
-  font-size: 12px;
-  margin: 2vw;
-}
-
-.inc {
-  font-size: 13px;
-}
