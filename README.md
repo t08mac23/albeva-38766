@@ -44,9 +44,13 @@ basic認証 Password:  2222
 
 
 # データベース設計  
-<img width="711" alt="スクリーンショット 2023-01-20 17 39 57" src="https://user-images.githubusercontent.com/118711928/213912438-fd0c7d14-d815-41da-b418-566a769e0125.png">
+<img width="711" alt="スクリーンショット 2023-01-20 17 39 57" src="https://user-images.githubusercontent.com/118711928/213912438-fd0c7d14-d815-41da-b418-566a769e0125.png">  
+
 
 # 画面遷移図  
+
+<img width="535" alt="スクリーンショット 2023-01-24 18 05 25" src="https://user-images.githubusercontent.com/118711928/214251778-51f5b054-578c-4074-8d7f-d4299d017a19.png">  
+
 
 
 # 開発環境  
