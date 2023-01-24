@@ -138,6 +138,31 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="49" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=1;startSize=6;endSize=10;sourcePerimeterSpacing=0;targetPerimeterSpacing=5;strokeWidth=3;" edge="1" parent="1" source="45" target="46">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=1;startSize=6;endSize=10;sourcePerimeterSpacing=0;targetPerimeterSpacing=5;strokeWidth=3;" edge="1" parent="1" source="45" target="47">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=1;startSize=6;endSize=10;sourcePerimeterSpacing=0;targetPerimeterSpacing=5;strokeWidth=3;" edge="1" parent="1" source="45" target="48">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="140" y="-840"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="トップページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="-1080" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="ユーザー新規登録" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="294" y="-1120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="ユーザーログイン" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="294" y="-1000" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="新規投稿ページ&lt;br&gt;（乾杯ページ）" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="290" y="-870" width="120" height="60" as="geometry"/>
+                </mxCell>
             </root>
         </mxGraphModel>
     </diagram>

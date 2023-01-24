@@ -16,7 +16,8 @@ basic認証 ID:  test
 
 basic認証 Password:  2222  
 
-メールアドレス:  test@mail
+メールアドレス:  test@mail  
+
 パスワード:  111aaa
 
 
