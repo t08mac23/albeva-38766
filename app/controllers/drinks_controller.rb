@@ -19,6 +19,10 @@ class DrinksController < ApplicationController
     end
   end
 
+  def show
+    @drink = Drink.find(params[:id])
+  end
+
   private
 
   def drink_params
