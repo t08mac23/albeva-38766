@@ -1,7 +1,7 @@
 /* 商品の概要 */
 
-.item-show {
-  background-color: #f8f8f8;
+.cheers-show {
+  background-color: rgb(31, 9, 9);;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   padding: 5vh 0;
 }
 
-.item-box {
+.cheers-box {
   background-color: #FFF;
   width: 70vw;
   min-width: 1200px;
@@ -17,42 +17,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 5px solid #f98602;
 }
 
-.item-box>.name {
+.cheers-box>.name {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
 }
 
-.item-box-img {
+.cheers-box-img {
   height: 50vh;
   width: 60vw;
   min-height: 500px;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
-}
-
-.item-price-box {
-  margin: 25px 0px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.item-price-box>.item-price {
-  font-size: 4vh;
-  font-weight: bold;
-}
-
-.item-price-box>.item-postage {
-  font-size: 16px;
+  border: 3px solid maroon;
+  margin-bottom: 30px;
 }
 
 
-.item-red-btn {
+
+
+.cheers-red-btn {
   text-align: center;
-  background-color: #ea352d;
+  background-color: maroon;
   font-size: 24px;
   font-weight: bold;
   color: #FFF;
@@ -61,10 +50,12 @@
 }
 
 .or-text {
-  font-size: 20px;
+  font-size: 30px;
+  text-shadow: 0 0 5px rgba(55, 28, 28, 0.9);
+  color: #eee;
 }
 
-.item-destroy {
+.cheers-destroy {
   background-color: lightgray;
   text-align: center;
   font-size: 24px;
@@ -73,10 +64,12 @@
   padding: 2vh 10vw;
 }
 
-.item-explain-box {
+.cheers-explain-box {
   font-size: 18px;
   margin: 40px 0px;
   overflow-wrap: anywhere;
+  border: 3px solid maroon;
+  padding: 30px;
 }
 
 .detail-table {
@@ -84,7 +77,7 @@
   width: 100%;
 }
 
-.detail-item {
+.detail-cheers {
   width: 20%;
   background-color: #eee;
   border: 1px solid #dedede;
@@ -142,10 +135,11 @@
 /* /商品の概要 */
 
 .comment-box {
-  width: 40vw;
+  width: 50vw;
   background-color: #fff;
-  margin: 5vh 0;
+  margin: 8vh 0;
   text-align: center;
+  border: 5px solid #f98602;
 }
 
 .comment-text {
@@ -165,8 +159,8 @@
 
 .comment-btn {
   line-height: 48px;
-  background-color: #3CCACE;
-  border: 1px solid #3CCACE;
+  background-color: #f98602;
+  border: 1px solid #f98602;
   color: #fff;
   width: 50%;
   min-width: 150px;
@@ -191,16 +185,16 @@
 
 }
 
-.change-item-btn {
+.change-cheers-btn {
   font-size: 30px;
   text-decoration: none;
-  color: #3CCACE;
+  color: #f98602;
 }
 
-.another-item {
+.another-cheers {
   display: block;
   margin: 30px 0px 8px;
-  color: #3CCACE;
+  color: #f98602;
   text-decoration: none;
   font-weight: bold;
   font-size: 23px;

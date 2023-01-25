@@ -8,7 +8,8 @@
     </form>
   </div>
   <div class='nav'>
-    <ul class='lists-left'>
+    <ul class='lists-right'>
+      <li><%= link_to 'トップページ', root_path, class: "user-nickname" %></li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
