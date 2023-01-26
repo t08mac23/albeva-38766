@@ -1,4 +1,4 @@
-/* 商品の概要 */
+/* 概要 */
 
 .cheers-show {
   background-color: rgb(31, 9, 9);;
@@ -17,22 +17,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 5px solid #f98602;
+  border: 5px solid maroon;
 }
 
 .cheers-box>.name {
   text-align: center;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 30px;
+  color: rgb(31, 9, 9);
+  margin-bottom: 20px;
 }
 
 .cheers-box-img {
   height: 50vh;
   width: 60vw;
   min-height: 500px;
-  background-color: rgb(205, 202, 202);
+  background-color: rgb(252, 242, 228);
   object-fit: contain;
-  border: 3px solid maroon;
   margin-bottom: 30px;
 }
 
@@ -47,6 +48,7 @@
   color: #FFF;
   margin: 20px 0px;
   padding: 2vh 10vw;
+  border: solid rgb(252, 242, 228);
 }
 
 .or-text {
@@ -62,6 +64,7 @@
   color: black;
   margin: 20px 0px;
   padding: 2vh 10vw;
+  border: solid rgb(252, 242, 228);
 }
 
 .cheers-explain-box {
@@ -72,6 +75,27 @@
   padding: 30px;
 }
 
+.detail-table-zero {
+  margin-bottom: 50px;
+  width: 114%;
+  height: 40vh;
+}
+
+.detail-cheers-zero {
+  width: 20%;
+  background-color: #f98602;
+  border: 1px solid #f98602;
+  font-size: 18px;
+  text-align: center;
+}
+
+.detail-value-zero {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #f98602;
+  font-size: 16px;
+}
+
 .detail-table {
   margin-bottom: 30px;
   width: 100%;
@@ -79,17 +103,17 @@
 
 .detail-cheers {
   width: 20%;
-  background-color: #eee;
-  border: 1px solid #dedede;
-  font-size: 14px;
+  background-color: rgb(252, 242, 228);
+  border: 2px solid rgba(55, 28, 28, 0.9);
+  font-size: 18px;
   text-align: center;
 }
 
 .detail-value {
   width: 80%;
   padding: 20px;
-  border: 1px solid #dedede;
-  font-size: 14px;
+  border: 2px solid rgba(55, 28, 28, 0.9);
+  font-size: 16px;
 }
 
 .option {
@@ -132,7 +156,7 @@
 }
 
 
-/* /商品の概要 */
+/* /概要 */
 
 .comment-box {
   width: 50vw;
