@@ -21,8 +21,6 @@ RSpec.describe "乾杯する", type: :system do
       fill_in 'password', with: @user.password
       find('input[name="commit"]').click
       expect(current_path).to eq(root_path)
-      # 新規投稿ページへのボタンがあることを確認する
-      # expect(page).to have_content('乾杯する')
       # 投稿ページに移動する
       visit new_drink_path
       # フォームに情報を入力する
@@ -53,6 +51,65 @@ RSpec.describe "乾杯する", type: :system do
       # 新規投稿ページへのボタンがないことを確認する
       visit new_drink_path
       expect(current_path).to eq(new_user_session_path)
+    end
+  end
+end
+
+
+RSpec.describe '投稿の編集', type: :system do
+  before do
+    @drink1 = FactoryBot.create(:drink)
+    @drink2 = FactoryBot.create(:drink)
+  end
+  context '投稿内容が編集ができるとき' do
+    it 'ログインしたユーザーは自分が乾杯した投稿を編集できる' do
+      # 乾杯1を投稿したユーザーでログインする
+      basic_pass root_path
+      visit new_user_session_path
+      fill_in 'email', with: @drink1.user.email
+      fill_in 'password', with: @drink1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # 乾杯1の詳細ページへ遷移する
+      visit drink_path(@drink1)
+      # 編集ページへ遷移する
+      visit edit_drink_path(@drink1)
+      # 投稿内容を編集する
+      fill_in 'drink[name]', with: @drink2.name
+      fill_in 'drink[description]', with: @drink2.description
+      # 編集してもdrinkモデルのカウントは変わらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Drink.count }.by(0)
+      # 編集完了し詳細ページに遷移したことを確認する
+      expect(current_path).to eq(drink_path(@drink1))
+      # 詳細ページには先ほど変更した内容が存在することを確認する
+      expect(page).to have_content(@drink2.name)
+      expect(page).to have_content(@drink2.description)
+    end
+  end
+  context '編集ができないとき' do
+    it 'ログインしたユーザーは自分以外が乾杯した投稿の編集画面には遷移できない' do
+      # 乾杯1を投稿したユーザーでログインする
+      basic_pass root_path
+      visit new_user_session_path
+      fill_in 'email', with: @drink1.user.email
+      fill_in 'password', with: @drink1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # 乾杯2に「編集」へのリンクがないことを確認する
+      visit drink_path(@drink2)
+      expect(page).to have_no_link '編集', href: edit_drink_path(@drink2)
+    end
+    it 'ログインしていないと編集画面には遷移できない' do
+      # トップページにいる
+      visit root_path
+      # 乾杯1に「編集」へのリンクがないことを確認する
+      visit drink_path(@drink1)
+      expect(page).to have_no_link '編集', href: edit_drink_path(@drink1)
+      # 乾杯2に「編集」へのリンクがないことを確認する
+      visit drink_path(@drink2)
+      expect(page).to have_no_link '編集', href: edit_drink_path(@drink2)
     end
   end
 end
