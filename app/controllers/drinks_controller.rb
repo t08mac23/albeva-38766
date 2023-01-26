@@ -1,6 +1,7 @@
 class DrinksController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_drink, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @drinks = Drink.all.order("created_at DESC")
@@ -20,7 +21,17 @@ class DrinksController < ApplicationController
   end
 
   def show
-    @drink = Drink.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @drink.update(drink_params)
+      redirect_to drink_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -31,4 +42,7 @@ class DrinksController < ApplicationController
       :best_time_id).merge(user_id: current_user.id)
   end
 
+  def set_drink
+    @drink = Drink.find(params[:id])
+  end
 end

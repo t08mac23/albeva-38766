@@ -22,80 +22,9 @@
     </div>
     <%# /画像 %>
 
-    <%# 名前、レシピ説明とおつまみ %>
-    <div class="new-cheers">
-      <div class="weight-bold-text">
-        名前
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.text_area :name, class:"cheers-text", id:"cheers-name", placeholder:"NAME（必須 30文字まで)", maxlength:"30" %>
-      <%# 度数  %>
-      <div class="cheers-alc">
-        <div class="weight-bold-text question-text">
-          <span>アルコール度数<br></span>
-          <a><span class="indispensable">必須</span></a>
-        </div>
-        <div>
-          <div class="alc-content">
-            <div class="alc-text">
-              <span>度数</span>
-            </div>
-            <%= f.text_field :alc_percent, class:"alc-input", id:"cheers-alc-percent", placeholder:"小数点は四捨五入（例）15" %>
-            <span class="percent">%</span>
-          </div>
-        </div>
-      </div>
-      <%# /* /度数 */ %>
-      <div class="cheers-explain">
-        <div class="weight-bold-text">
-          レシピ紹介！
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.text_area :description, class:"cheers-text", id:"cheers-info", placeholder:"レシピの説明（必須 1,000文字まで）（ベースのお酒、リキュールの種類、量、割り方、自分だけのオリジナリティやこだわり、注意点など)" ,rows:"7" ,maxlength:"1000" %>
-      </div>
-      <div class="weight-bold-text">
-        おつまみ
-        <span class="optional">任意</span>
-      </div>
-      <%= f.text_area :combo, class:"snack-text", id:"cheers-name", placeholder:"（任意）合わせるおつまみなど" %>
-    </div>
-    <%# /名前、レシピ説明とおつまみ %>
-
-    <%# 詳細 %>
-    <div class="cheers-detail">
-      <div class="form">
-        <div class="weight-bold-text">
-          どんな飲み物？
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"cheers-genre"}) %>
-        <div class="weight-bold-text">
-          テイスト
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:sweet_dry_id, SweetDry.all, :id, :name, {}, {class:"select-box", id:"cheers-sweet-dry"}) %>
-        <div class="weight-bold-text">
-          初心者におすすめ度
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:recommendation_id, Recommendation.all, :id, :name, {}, {class:"select-box", id:"cheers-recommendation"}) %>
-        <div class="weight-bold-text">
-          ベストタイム
-          <span class="optional">任意</span>
-        </div>
-        <%= f.collection_select(:best_time_id, BestTime.all, :id, :name, {}, {class:"optional-box", id:"cheers-best-time"}) %>
-      </div>
-    </div>
-    <%# 詳細 %>
-
-    <%# 下部ボタン %>
-    <div class="cheers-btn-contents">
-      <%= f.submit "乾杯する" ,class:"cheers-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-    <%# /下部ボタン %>
+    <%= render 'shared/second_cheers' %>
+    
   </div>
   <% end %>
   <%= render "shared/cheers" %>
-  </footer>
 </div>
