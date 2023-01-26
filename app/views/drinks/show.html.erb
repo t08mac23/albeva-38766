@@ -1,6 +1,6 @@
 <%= render "shared/second_header" %>
 
-<%# 商品の概要 %>
+<%# 概要 %>
 <div class="cheers-show">
   <div class="cheers-box">
     <h2 class="name">#
@@ -62,20 +62,13 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
-      <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+  <%# /概要 %>
+
     <% if current_user == @drink.user %>
       <%= link_to "編集", "#", method: :get, class: "cheers-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", "#", method: :delete, class:"cheers-destroy" %>
     <% end %>
-
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%# <%= link_to "", "#" ,class:"cheers-red-btn"%> 
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
-
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
   <div class="comment-box">
     <form>
