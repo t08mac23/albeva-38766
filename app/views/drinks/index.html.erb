@@ -23,7 +23,7 @@
       <% if @drinks.present? %>
         <% @drinks.each do |drink| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to drink_path(drink.id) do %>
               <div class='post-img-content'>
                 <%= image_tag drink.image, class: "post-img" %>
               </div>
