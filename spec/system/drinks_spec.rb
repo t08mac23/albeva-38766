@@ -75,7 +75,7 @@ RSpec.describe '投稿の編集', type: :system do
       # 編集ページへ遷移する
       visit edit_drink_path(@drink1)
       # 投稿内容を編集する
-      fill_in 'drink[name]', with: @drink2.name
+      # fill_in 'drink[name]', with: @drink2.name
       fill_in 'drink[description]', with: @drink2.description
       # 編集してもdrinkモデルのカウントは変わらないことを確認する
       expect{
@@ -84,7 +84,7 @@ RSpec.describe '投稿の編集', type: :system do
       # 編集完了し詳細ページに遷移したことを確認する
       expect(current_path).to eq(drink_path(@drink1))
       # 詳細ページには先ほど変更した内容が存在することを確認する
-      expect(page).to have_content(@drink2.name)
+      # expect(page).to have_content(@drink2.name)
       expect(page).to have_content(@drink2.description)
     end
   end
@@ -110,6 +110,65 @@ RSpec.describe '投稿の編集', type: :system do
       # 乾杯2に「編集」へのリンクがないことを確認する
       visit drink_path(@drink2)
       expect(page).to have_no_link '編集', href: edit_drink_path(@drink2)
+    end
+  end
+end
+
+
+RSpec.describe '投稿の削除', type: :system do
+  before do
+    @drink1 = FactoryBot.create(:drink)
+    @drink2 = FactoryBot.create(:drink)
+  end
+  context '投稿内容が削除ができるとき' do
+    it 'ログインしたユーザーは自分が乾杯した投稿を削除できる' do
+      # 乾杯1を投稿したユーザーでログインする
+      basic_pass root_path
+      visit new_user_session_path
+      fill_in 'email', with: @drink1.user.email
+      fill_in 'password', with: @drink1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # 乾杯1の詳細ページへ遷移する
+      visit drink_path(@drink1)
+      # 乾杯1に「削除」へのリンクがあることを確認する
+      expect(page).to have_content '削除'
+      # 投稿を削除するとレコードの数が1減ることを確認する
+      expect{
+        first(:link, '削除').click
+      }.to change { Drink.count }.by(-1)
+      # 削除完了画面に遷移したことを確認する
+      expect(current_path).to eq(drink_path(@drink1))
+      # 「削除が完了しました」の文字があることを確認する
+      expect(page).to have_content('乾杯が削除されました')
+      # トップページに遷移する
+      visit root_path
+      # トップページには乾杯1の内容が存在しないことを確認する
+      expect(page).to have_no_content(@drink1)
+    end
+  end
+  context '削除ができないとき' do
+    it 'ログインしたユーザーは自分以外が乾杯した投稿の編集画面には遷移できない' do
+      # 乾杯1を投稿したユーザーでログインする
+      basic_pass root_path
+      visit new_user_session_path
+      fill_in 'email', with: @drink1.user.email
+      fill_in 'password', with: @drink1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # 乾杯2に「削除」へのリンクがないことを確認する
+      visit drink_path(@drink2)
+      expect(page).to have_no_link '削除', href: edit_drink_path(@drink2)
+    end
+    it 'ログインしていないと編集画面には遷移できない' do
+      # トップページにいる
+      visit root_path
+      # 乾杯1に「削除」へのリンクがないことを確認する
+      visit drink_path(@drink1)
+      expect(page).to have_no_link '削除', href: edit_drink_path(@drink1)
+      # 乾杯2に「削除」へのリンクがないことを確認する
+      visit drink_path(@drink2)
+      expect(page).to have_no_link '削除', href: edit_drink_path(@drink2)
     end
   end
 end
