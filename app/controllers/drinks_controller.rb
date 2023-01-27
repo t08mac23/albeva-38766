@@ -1,7 +1,8 @@
 class DrinksController < ApplicationController
 
-  before_action :set_drink, only: [:show, :edit, :update]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :set_drink, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
     @drinks = Drink.all.order("created_at DESC")
@@ -34,6 +35,10 @@ class DrinksController < ApplicationController
     end
   end
 
+  def destroy
+    @drink.destroy
+  end
+
   private
 
   def drink_params
@@ -44,5 +49,9 @@ class DrinksController < ApplicationController
 
   def set_drink
     @drink = Drink.find(params[:id])
+  end
+
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @drink.user
   end
 end
