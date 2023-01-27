@@ -67,7 +67,7 @@
     <% if current_user == @drink.user %>
       <%= link_to "編集", edit_drink_path(@drink), method: :get, class: "cheers-red-btn" %>
       <p class="or-text">or</p>
-      <%= link_to "削除", "#", method: :delete, class:"cheers-destroy" %>
+      <%= link_to "削除", drink_path(@drink), method: :delete, class:"cheers-destroy" %>
     <% end %>
 
   <div class="comment-box">
