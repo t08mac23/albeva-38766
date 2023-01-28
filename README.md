@@ -50,7 +50,8 @@ basic認証 Password:  2222
 
 # 画面遷移図  
 
-<img width="535" alt="スクリーンショット 2023-01-24 18 05 25" src="https://user-images.githubusercontent.com/118711928/214251778-51f5b054-578c-4074-8d7f-d4299d017a19.png">  
+<img width="672" alt="スクリーンショット 2023-01-28 23 37 32" src="https://user-images.githubusercontent.com/118711928/215272458-a11fa6d1-e26c-482c-9cc5-571d78725d8e.png">
+
 
 
 
