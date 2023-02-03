@@ -73,7 +73,7 @@
   <div class="comment-box">
     <% if user_signed_in? %>
       <%= form_with(model: [@drink, @comment], local: true) do |form| %>
-        <%= form.text_area :text, class:"comment-text", id:"cheers-comment", placeholder: "コメントする", rows: "2" %>
+        <%= form.text_area :text, class:"comment-text", id:"cheers-comment", placeholder: "すごくいいですね！", rows: "2" %>
         <p class="comment-warn">
           *相手のことを考え丁寧なコメントを心がけましょう。
           <br>
@@ -82,13 +82,15 @@
         <%= form.submit "コメントする", class:"comment-btn" %>
       <% end %>
     <% end %>
-    <h4>＜コメント一覧＞</h4>
-      <% @comments.each do |comment| %>
-        <p>
-          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-          <%= comment.text %>
-        </p>
-      <% end %>
+    <% if @comments.present? %>
+      <h4 class="comment_index">#コメント一覧</h4>
+        <% @comments.each do |comment| %>
+          <p class="comment-parent">
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment" %>：</strong>
+            <%= link_to comment.text,"#", class:"comment" %>
+          </p>
+        <% end %>
+    <% end %>
   </div>
 
   <div class="links">
