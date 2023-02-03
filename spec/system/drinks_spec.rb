@@ -1,34 +1,23 @@
 require 'rails_helper'
 
-def basic_pass(path)
-  username = ENV["BASIC_AUTH_USER"]
-  password = ENV["BASIC_AUTH_PASSWORD"]
-  visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
-end
-
 RSpec.describe "乾杯する", type: :system do
   before do
     @user = FactoryBot.create(:user)
-    @drink = FactoryBot.create(:drink)
+    @drink1 = FactoryBot.create(:drink)
   end
 
   context '投稿ができるとき'do
     it 'ログインしたユーザーは乾杯できる' do
       # ログインする
-      basic_pass root_path
-      visit new_user_session_path
-      fill_in 'email', with: @user.email
-      fill_in 'password', with: @user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@drink1.user)
       # 投稿ページに移動する
       visit new_drink_path
       # フォームに情報を入力する
       attach_file "drink[image]", "#{Rails.root}/spec/fixtures/f569f9fd1992c36a6c42c915abbd924c_w.jpeg"
-      fill_in 'drink[name]', with: @drink.name
-      fill_in 'drink[alc_percent]', with: @drink.alc_percent
-      fill_in 'drink[description]', with: @drink.description
-      fill_in 'drink[combo]', with: @drink.combo
+      fill_in 'drink[name]', with: @drink1.name
+      fill_in 'drink[alc_percent]', with: @drink1.alc_percent
+      fill_in 'drink[description]', with: @drink1.description
+      fill_in 'drink[combo]', with: @drink1.combo
       select 'カクテル', from: 'drink[genre_id]'
       select '甘口', from: 'drink[sweet_dry_id]'
       select '★★★★☆', from: 'drink[recommendation_id]'
@@ -58,25 +47,20 @@ end
 
 RSpec.describe '投稿の編集', type: :system do
   before do
+    # @user = FactoryBot.create(:user)
     @drink1 = FactoryBot.create(:drink)
     @drink2 = FactoryBot.create(:drink)
   end
   context '投稿内容が編集ができるとき' do
     it 'ログインしたユーザーは自分が乾杯した投稿を編集できる' do
       # 乾杯1を投稿したユーザーでログインする
-      basic_pass root_path
-      visit new_user_session_path
-      fill_in 'email', with: @drink1.user.email
-      fill_in 'password', with: @drink1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@drink1.user)
       # 乾杯1の詳細ページへ遷移する
       visit drink_path(@drink1)
       # 編集ページへ遷移する
       visit edit_drink_path(@drink1)
       # 投稿内容を編集する
-      # fill_in 'drink[name]', with: @drink2.name
-      fill_in 'drink[description]', with: @drink2.description
+      fill_in 'drink[description]', with: "#{@drink1.description}+a1"
       # 編集してもdrinkモデルのカウントは変わらないことを確認する
       expect{
         find('input[name="commit"]').click
@@ -84,19 +68,13 @@ RSpec.describe '投稿の編集', type: :system do
       # 編集完了し詳細ページに遷移したことを確認する
       expect(current_path).to eq(drink_path(@drink1))
       # 詳細ページには先ほど変更した内容が存在することを確認する
-      # expect(page).to have_content(@drink2.name)
-      expect(page).to have_content(@drink2.description)
+      expect(page).to have_content("#{@drink1.description}+a1")
     end
   end
   context '編集ができないとき' do
     it 'ログインしたユーザーは自分以外が乾杯した投稿の編集画面には遷移できない' do
       # 乾杯1を投稿したユーザーでログインする
-      basic_pass root_path
-      visit new_user_session_path
-      fill_in 'email', with: @drink1.user.email
-      fill_in 'password', with: @drink1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@drink1.user)
       # 乾杯2に「編集」へのリンクがないことを確認する
       visit drink_path(@drink2)
       expect(page).to have_no_link '編集', href: edit_drink_path(@drink2)
@@ -117,22 +95,18 @@ end
 
 RSpec.describe '投稿の削除', type: :system do
   before do
+    # @user = FactoryBot.create(:user)
     @drink1 = FactoryBot.create(:drink)
-    @drink2 = FactoryBot.create(:drink)
+    @drink4 = FactoryBot.create(:drink)
   end
   context '投稿内容が削除ができるとき' do
     it 'ログインしたユーザーは自分が乾杯した投稿を削除できる' do
       # 乾杯1を投稿したユーザーでログインする
-      basic_pass root_path
-      visit new_user_session_path
-      fill_in 'email', with: @drink1.user.email
-      fill_in 'password', with: @drink1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@drink1.user)
       # 乾杯1の詳細ページへ遷移する
       visit drink_path(@drink1)
       # 乾杯1に「削除」へのリンクがあることを確認する
-      expect(page).to have_content '削除'
+      expect(page).to have_content('削除'), href: drink_path(@drink1)
       # 投稿を削除するとレコードの数が1減ることを確認する
       expect{
         first(:link, '削除').click
@@ -150,15 +124,10 @@ RSpec.describe '投稿の削除', type: :system do
   context '削除ができないとき' do
     it 'ログインしたユーザーは自分以外が乾杯した投稿の編集画面には遷移できない' do
       # 乾杯1を投稿したユーザーでログインする
-      basic_pass root_path
-      visit new_user_session_path
-      fill_in 'email', with: @drink1.user.email
-      fill_in 'password', with: @drink1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
-      # 乾杯2に「削除」へのリンクがないことを確認する
-      visit drink_path(@drink2)
-      expect(page).to have_no_link '削除', href: edit_drink_path(@drink2)
+      sign_in(@drink1.user)
+      # 乾杯4に「削除」へのリンクがないことを確認する
+      visit drink_path(@drink4)
+      expect(page).to have_no_link '削除', href: edit_drink_path(@drink4)
     end
     it 'ログインしていないと編集画面には遷移できない' do
       # トップページにいる
@@ -166,9 +135,9 @@ RSpec.describe '投稿の削除', type: :system do
       # 乾杯1に「削除」へのリンクがないことを確認する
       visit drink_path(@drink1)
       expect(page).to have_no_link '削除', href: edit_drink_path(@drink1)
-      # 乾杯2に「削除」へのリンクがないことを確認する
-      visit drink_path(@drink2)
-      expect(page).to have_no_link '削除', href: edit_drink_path(@drink2)
+      # 乾杯4に「削除」へのリンクがないことを確認する
+      visit drink_path(@drink4)
+      expect(page).to have_no_link '削除', href: edit_drink_path(@drink4)
     end
   end
 end

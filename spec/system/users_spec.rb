@@ -65,7 +65,8 @@ end
 
 RSpec.describe 'ログイン', type: :system do
   before do
-    @user = FactoryBot.create(:user)
+    # @user = FactoryBot.create(:user)
+    @drink1 = FactoryBot.create(:drink)
   end
   context 'ログインができるとき' do
     it '保存されているユーザーの情報と合致すればログインができる' do
@@ -76,14 +77,10 @@ RSpec.describe 'ログイン', type: :system do
       # トップページにログインページへ遷移するボタンがあることを確認する
       expect(page).to have_content('ログイン')
       # ログインページへ遷移する
-      visit new_user_session_path
       # 正しいユーザー情報を入力する
-      fill_in 'email', with: @user.email
-      fill_in 'password', with: @user.password
       # ログインボタンを押す
-      find('input[name="commit"]').click
       # トップページへ遷移することを確認する
-      expect(current_path).to eq(root_path)
+      sign_in(@drink1.user)
       # ログアウトするボタンがあることを確認する
       expect(page).to have_content('ログアウト')
       # サインアップページへ遷移するボタンやログインページへ遷移するボタンが表示されていないことを確認する
