@@ -22,6 +22,8 @@ class DrinksController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @drink.comments.includes(:user)
   end
 
   def edit
