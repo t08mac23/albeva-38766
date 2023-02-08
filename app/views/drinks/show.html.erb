@@ -72,14 +72,14 @@
 
   <div class="comment-box">
     <% if user_signed_in? %>
-      <%= form_with(model: [@drink, @comment], local: true) do |form| %>
+      <%= form_with(model: [@drink, @comment], id:"comment_form", local: true) do |form| %>
         <%= form.text_area :text, class:"comment-text", id:"cheers-comment", placeholder: "すごくいいですね！", rows: "2" %>
         <p class="comment-warn">
           *相手のことを考え丁寧なコメントを心がけましょう。
           <br>
           *不快な言葉遣いなどは利用制限や退会処分となることがあります。
         </p>
-        <%= form.submit "コメントする", class:"comment-btn" %>
+        <%= form.submit "コメントする", class:"comment-btn", id:"submit_btn" %>
       <% end %>
     <% end %>
     <% if @comments.present? %>
