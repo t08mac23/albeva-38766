@@ -2,6 +2,7 @@
   width: 70%;
   margin: 0 auto;
   margin-top: 80px;
+  text-align: center;
 }
 
 .login-color-btn {
@@ -13,18 +14,7 @@
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
-}
-
-.back-btn {
-  width: 100%;
-  background-color: rgb(15, 13, 77);
-  border: 1px solid black;
-  color: rgba(232, 215, 215, 0.9);
-  text-shadow: 0 0 5px rgba(6, 81, 255, 0.9);
-  /* line-height: 48px; */
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .new-login-btn {
@@ -36,7 +26,7 @@
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
-  margin-top: 30px;
+  padding: 15px 100px;
 }
 
 .login-flash-message {

@@ -25,12 +25,12 @@
     </div>
     <div class='login-btn'>
       <%= f.submit "ログイン" ,class:"login-color-btn" %>
-      <%= link_to root_path do %>
-      <button class="back-btn">戻る</button>
-      <% end %> 
-      <%= link_to new_user_registration_path do %>
-      <button class="new-login-btn">初めての方はコチラ</button>
-      <% end %>
+      <%=link_to '初めての方はコチラ', new_user_registration_path, class:"new-login-btn" %>
     </div>  
   </div>
 <% end %>
+
+<%= link_to(root_path, class: 'post-btn') do %>
+  <span class='post'>もどる</span>
+<% end %>
+
