@@ -68,36 +68,19 @@
       <% if current_user == @drink.user %>
         <%= link_to "編集", edit_drink_path(@drink), method: :get, class: "cheers-red-btn" %>
         <p class="or-text">or</p>
-        <%= link_to "削除", drink_path(@drink), method: :delete, class:"cheers-destroy" %>
+        <%= link_to "削除", drink_path(@drink), method: :delete, class:"cheers-destroy", data: {confirm: "本当に削除しますか？"} %>
       <% end %>
       
-    <div class="comment-box">
-      <% if user_signed_in? %>
-        <%= form_with(model: [@drink, @comment], id:"comment_form", local: true) do |f| %>
-          <%= render 'shared/error_messages', model: f.object %>
-          <%= f.text_area :text, class:"comment-text", id:"cheers-comment", placeholder: "すごくいいですね！", rows: "2" %>
-          <p class="comment-warn">
-            *相手のことを考え丁寧なコメントを心がけましょう。
-            <br>
-            *不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          </p>
-          <%= f.submit "コメントする", class:"comment-btn", id:"submit_btn" %>
-        <% end %>
-      <% end %>
-      <% if @comments.present? %>
-        <h4 class="comment_index">#コメント一覧</h4>
-          <% @comments.each do |comment| %>
-            <p class="comment-parent">
-              <strong><%= link_to comment.user.nickname, "#", class:"comment", id:"comment_names" %>：</strong>
-              <div class="comment", id="comment_texts"><%= comment.text%></div>
-            </p>
-            <ul class="comment-choices hidden" id="pull-down">
-              <li class="comment-edit">編集</li>
-              <li class="comment-destroy">削除</li>
-            </ul>
-          <% end %>
-      <% end %>
+      <%# コメント %>
+    <div class="comment-box" id="comment_box">
+      <%= render 'comments/form', drink: @drink, comment: @comment %>
+      <div id="comments_area"> 
+        <%= render 'comments/drink_comments', drink: @drink, comment: @comment %>
+      </div>
     </div>
+      <%# /コメント %> 
+    
+
     <div class="links">
       <a href="#" class="change-cheers-btn">
         ＜ 前の乾杯

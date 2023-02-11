@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <%= form_with(model: [@drink, @comment], id:"comment_form", remote: true) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <%= f.text_area :text, class:"comment-text", id:"cheers-comment", placeholder: "すごくいいですね！", rows: "2" %>
+    <p class="comment-warn">
+      *相手のことを考え丁寧なコメントを心がけましょう。
+      <br>
+      *不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    </p>
+    <%= f.submit "コメントする", class:"comment-btn", id:"submit_btn" %>
+  <% end %>
+<% end %>
