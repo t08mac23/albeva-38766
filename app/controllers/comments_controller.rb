@@ -5,12 +5,14 @@ class CommentsController < ApplicationController
   # before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def create
-    @drink = Drink.find(params[:drink_id])
-    @comment = current_user.comments.new(comment_params)
-    @comment.drink_id = @drink.id
+    drink = Drink.find(params[:drink_id])
+    comment = current_user.comments.new(comment_params)
+    comment.drink_id = drink.id
     # @comment = Comment.create(comment_params)
-    if @comment.save
+    if comment.save
       flash.now[:notice] = 'コメントを投稿しました'
+      @drink = Drink.find(params[:drink_id])
+      @comment = Comment.new
     #   # redirect_to "/drinks/#{@comment.drink.id}"
     #   render :drink_comments
     else
@@ -33,7 +35,7 @@ class CommentsController < ApplicationController
     flash.now[:alert] = '投稿を削除しました'
     #renderしたときに@drinkのデータがないので@drinkを定義
     # @drink = Drink.find(params[:drink_id])  
-    render :drink_comments  #render先にjsファイルを指定
+    # render :drink_comments  #render先にjsファイルを指定
   end
 
   private
