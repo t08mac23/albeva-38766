@@ -37,15 +37,7 @@
               </div>
             <% end %>
             <div class="favo">
-              <% if drink.favo?(current_user) %>
-                <%= link_to drink_favorites_path(drink), class:"favo", method: :delete do %>
-                  ♥ <%= drink.favorites.count %>
-                <% end %>
-              <% else %>
-                <%=link_to drink_favorites_path(drink.id), class:"favo", method: :post do %>
-                  ♡ <%= drink.favorites.count %>
-                <% end %>
-              <% end %>
+              <%= render "favorites/favorite", drink: drink%>
             </div>
           </li>
         <% end %>

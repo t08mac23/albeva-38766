@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+
+  before_action :authenticate_user!, only: [:create, :destroy]
   def create
     drink = Drink.find(params[:drink_id])
     favorite = Favorite.new(drink_id: drink.id)
