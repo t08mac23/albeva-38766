@@ -1,109 +1,99 @@
 <%= render "shared/second_header" %>
 
+<body>
 <%# 概要 %>
-<div class="cheers-show">
-  <div class="cheers-box">
-    <h2 class="name">#
-      <%= @drink.name %>
-    </h2>
-    <div class="cheers-img-content">
-      <%= image_tag @drink.image ,class:"cheers-box-img" %>
-    </div>
+  <div class="cheers-show">
+    <div class="cheers-box">
+      <h2 class="name">#
+        <%= @drink.name %>
+      </h2>
+      <div class="cheers-img-content">
+        <%= image_tag @drink.image ,class:"cheers-box-img" %>
+      </div>
 
-    <table class="detail-table-zero">
-      <tbody>
-        <tr>
-          <th class="detail-cheers-zero">レシピ/説明</th>
-          <td class="detail-value-zero"><%= @drink.description %></td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="detail-table-zero">
+        <tbody>
+          <tr>
+            <th class="detail-cheers-zero">レシピ/説明</th>
+            <td class="detail-value-zero"><%= @drink.description %></td>
+          </tr>
+        </tbody>
+      </table>
 
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-cheers">乾杯者</th>
-          <td class="detail-value"><%= @drink.user.nickname %></td>
-        </tr>
-        <tr>
-          <th class="detail-cheers">ジャンル</th>
-          <td class="detail-value"><%= @drink.genre[:name] %></td>
-        </tr>
-        <tr>
-          <th class="detail-cheers">初心者におすすめ度</th>
-          <td class="detail-value"><%= @drink.recommendation[:name] %></td>
-        </tr>
-        <tr>
-          <th class="detail-cheers">テイスト</th>
-          <td class="detail-value"><%= @drink.sweet_dry[:name] %></td>
-        </tr>
-        <tr>
-          <th class="detail-cheers">おつまみ</th>
-          <% if @drink.combo.present? %>
-            <td class="detail-value"><%= @drink.combo %></td>
-          <% else %>
-            <td class="detail-value">なんでも合います！</td>
-          <% end %>
-        </tr>
-        <tr>
-          <th class="detail-cheers">ベストタイム</th>
-          <% unless @drink.best_time_id == 1 %>
-            <td class="detail-value"><%= @drink.best_time[:name] %></td>
-          <% else %>
-            <td class="detail-value">いつでもいけちゃいます！</td>
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%# <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%> 
-        <span>お気に入り 0</span>
+      <table class="detail-table">
+        <tbody>
+          <tr>
+            <th class="detail-cheers">乾杯者</th>
+            <td class="detail-value"><%= @drink.user.nickname %></td>
+          </tr>
+          <tr>
+            <th class="detail-cheers">ジャンル</th>
+            <td class="detail-value"><%= @drink.genre[:name] %></td>
+          </tr>
+          <tr>
+            <th class="detail-cheers">初心者におすすめ度</th>
+            <td class="detail-value"><%= @drink.recommendation[:name] %></td>
+          </tr>
+          <tr>
+            <th class="detail-cheers">テイスト</th>
+            <td class="detail-value"><%= @drink.sweet_dry[:name] %></td>
+          </tr>
+          <tr>
+            <th class="detail-cheers">おつまみ</th>
+            <% if @drink.combo.present? %>
+              <td class="detail-value"><%= @drink.combo %></td>
+            <% else %>
+              <td class="detail-value">なんでも合います！</td>
+            <% end %>
+          </tr>
+          <tr>
+            <th class="detail-cheers">ベストタイム</th>
+            <% unless @drink.best_time_id == 1 %>
+              <td class="detail-value"><%= @drink.best_time[:name] %></td>
+            <% else %>
+              <td class="detail-value">いつでもいけちゃいます！</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div class="option">
+        <div class="favorite-btn">
+          <%# <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%> 
+          <span>お気に入り 0</span>
+        </div>
       </div>
     </div>
-  </div>
-  <%# /概要 %>
+    <%# /概要 %>
 
-    <% if current_user == @drink.user %>
-      <%= link_to "編集", edit_drink_path(@drink), method: :get, class: "cheers-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", drink_path(@drink), method: :delete, class:"cheers-destroy" %>
-    <% end %>
-
-  <div class="comment-box">
-    <% if user_signed_in? %>
-      <%= form_with(model: [@drink, @comment], id:"comment_form", local: true) do |form| %>
-        <%= form.text_area :text, class:"comment-text", id:"cheers-comment", placeholder: "すごくいいですね！", rows: "2" %>
-        <p class="comment-warn">
-          *相手のことを考え丁寧なコメントを心がけましょう。
-          <br>
-          *不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        </p>
-        <%= form.submit "コメントする", class:"comment-btn", id:"submit_btn" %>
+      <% if current_user == @drink.user %>
+        <%= link_to "編集", edit_drink_path(@drink), method: :get, class: "cheers-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", drink_path(@drink), method: :delete, class:"cheers-destroy", data: {confirm: "本当に削除しますか？"} %>
       <% end %>
-    <% end %>
-    <% if @comments.present? %>
-      <h4 class="comment_index">#コメント一覧</h4>
-        <% @comments.each do |comment| %>
-          <p class="comment-parent">
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", class:"comment" %>：</strong>
-            <%= link_to comment.text,"#", class:"comment" %>
-          </p>
-        <% end %>
-    <% end %>
-  </div>
+      
+      <%# コメント %>
+    <div class="comment-box" id="comment_box">
+      <%= render 'comments/form', drink: @drink, comment: @comment %>
+      <div id="comments_area"> 
+        <%= render 'comments/drink_comments', drink: @drink, comment: @comment %>
+      </div>
+    </div>
+      <%# /コメント %> 
+    
 
-  <div class="links">
-    <a href="#" class="change-cheers-btn">
-      ＜ 前の乾杯
-    </a>
-    <a href="#" class="change-cheers-btn">
-      後ろの乾杯 ＞
-    </a>
+    <div class="links">
+      <a href="#" class="change-cheers-btn">
+        ＜ 前の乾杯
+      </a>
+      <a href="#" class="change-cheers-btn">
+        後ろの乾杯 ＞
+      </a>
+    </div>
+    <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+    <a href="#" class="another-cheers"><%= @drink.genre[:name] %>をもっと見る</a>
+    <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-cheers"><%= @drink.genre[:name] %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-</div>
+  <%# <script src="app/javascript/comment.js"></script> %>
+</body>
 
 <%= render "shared/footer" %>

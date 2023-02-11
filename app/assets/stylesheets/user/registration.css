@@ -132,15 +132,3 @@
   font-size: 14px;
   cursor: pointer;
 }
-
-
-.back-new-btn {
-  width: 100%;
-  background-color: rgba(55, 28, 28, 0.9);
-  border: 1px solid black;
-  color: #fff;
-  line-height: 48px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 30px;
-}
