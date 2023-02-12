@@ -33,7 +33,7 @@
   width: 5vh;
   border: 0;
   cursor: pointer;
-  background-color: rgb(252, 242, 228);
+  background-color: maroon;
   padding: 8px;
 }
 
@@ -79,4 +79,8 @@
 .sign-up {
   text-decoration: none;
   color: #cbc2c2;
+}
+
+.search-icon {
+  width: 100%;
 }
