@@ -3,13 +3,17 @@ class Drink < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :comments
+  has_many :favorites, dependent: :destroy
+
+    def favorited_by?(user)
+      favorites.where(user_id: user.id).exists?
+    end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
   belongs_to :sweet_dry
   belongs_to :recommendation
   belongs_to :best_time
-
 
   with_options presence: true do
     validates :image, :name, :description
