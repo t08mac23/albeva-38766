@@ -6,6 +6,9 @@
     <div class="cheers-box">
       <h2 class="name">#
         <%= @drink.name %>
+        <div class="favo" id="drink_<%= @drink.id %>">
+          <%= render "favorites/favorite", drink: @drink%>
+        </div>
       </h2>
       <div class="cheers-img-content">
         <%= image_tag @drink.image ,class:"cheers-box-img" %>

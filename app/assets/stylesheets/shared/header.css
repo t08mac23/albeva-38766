@@ -30,7 +30,7 @@
 }
 
 .search-button {
-  width: 5vh;
+  width: 15vh;
   border: 0;
   cursor: pointer;
   background-color: maroon;
@@ -82,5 +82,5 @@
 }
 
 .search-icon {
-  width: 100%;
+  width: 4%;
 }
