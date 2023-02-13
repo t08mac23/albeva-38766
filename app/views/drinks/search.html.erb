@@ -1,0 +1,30 @@
+<%= render partial: "shared/second_header", locals: { drink: @drink } %>
+
+<ul class='post-lists'>
+  <% if @drinks.present? %>
+    <% @drinks.each do |drink| %>
+      <li class='list'>
+        <%= link_to drink_path(drink.id) do %>
+          <div class='post-img-content'>
+            <%= image_tag drink.image, class: "post-img" %>
+          </div>
+          <div class='post-info'>
+            <h3 class='post-name'>
+              <%= drink.name %>
+            </h3>
+            <div class='post-user'>
+              <span><%= drink.user.nickname %></span>
+            </div>
+          </div>
+        <% end %>
+        <div class="favo" id="drink_<%= drink.id %>">
+          <%= render "favorites/favorite", drink: drink%>
+        </div>
+      </li>
+    <% end %>
+  <% else %>
+    <div class="search-unkown">
+      <h1>検索内容が見つかりませんでした。</h1>
+    </div>
+  <% end %>
+</ul>

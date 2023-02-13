@@ -41,6 +41,10 @@ class DrinksController < ApplicationController
     @drink.destroy
   end
 
+  def search
+    @drinks = Drink.search(params[:keyword])
+  end
+
   private
 
   def drink_params

@@ -9,6 +9,14 @@ class Drink < ApplicationRecord
       favorites.where(user_id: user.id).exists?
     end
 
+    def self.search(search)
+      if search != ""
+        Drink.where('name LIKE(?)', "%#{search}%")
+      else
+        Drink.all
+      end
+    end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
   belongs_to :sweet_dry
