@@ -75,7 +75,7 @@
       <% if current_user == @drink.user %>
         <%= link_to "編集", edit_drink_path(@drink), method: :get, class: "cheers-red-btn" %>
         <p class="or-text">or</p>
-        <%= link_to "削除", drink_path(@drink), method: :delete, class:"cheers-destroy", data: {confirm: "本当に削除しますか？"} %>
+        <%= link_to "削除", drink_path, method: :delete, class:"cheers-destroy", data: {confirm: "本当に削除しますか？"} %>
       <% end %>
       
       <%# コメント %>
