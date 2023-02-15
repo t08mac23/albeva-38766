@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= form_with(model: [drink, comment], id:"comment_form", remote: true) do |f| %>
+  <%= form_with(model: [drink, comment], id: "new_comment", local: true) do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <%= f.text_area :text, class:"comment-text", id:"cheers-comment", placeholder: "すごくいいですね！", rows: "2" %>
     <p class="comment-warn">

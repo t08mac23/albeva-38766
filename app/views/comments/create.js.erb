@@ -1,4 +1,4 @@
-<!--id="comments_areaにをrenderで指定した部分テンプレートに更新-->
-$('#comment_form').html("<%= j(render 'comments/drink_comments', drink: @drink, comment: @comment) %>");
+<%# <!--id="comments_areaにをrenderで指定した部分テンプレートに更新-->
+$('#comment_form').html("<%= j(render 'comments/drink_comments', drinks: @drinks, comment: @comment) %>");
 <!--フォームを送信したあとにフォームの値を空にします-->
-$(".text_area").val("");
+<%# $(".text_area").val(""); %> 
