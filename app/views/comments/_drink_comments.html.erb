@@ -7,7 +7,6 @@
       </p>
       <% if current_user == comment.user %>
         <ul class="comment-choices hidden" id="pull-down">
-          <li class="comment-edit">編集</li>
           <div class="comment-delete" id ="comment_delete">
             <%= link_to "削除",drink_path(@drink, @comment), method: :delete, class:"comment-destroy", remote: true, data: {confirm: "本当に削除しますか？"} %>
           </div>

@@ -1,8 +1,7 @@
 class CommentsController < ApplicationController
 
-  before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  # before_action :contributor_confirmation, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
     # drink = Drink.find(params[:drink_id])
@@ -27,13 +26,6 @@ class CommentsController < ApplicationController
     # end
   end
 
-  def edit
-  end
-
-  def update
-    @comment.update
-  end
-
   def destroy
     @drinks = Drink.find(params[:drink_id])  
     @comment.destroy
@@ -51,8 +43,4 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find(params[:id])
   end
-
-  # def contributor_confirmation
-  #   redirect_to root_path unless current_user == @comment.user
-  # end
 end
