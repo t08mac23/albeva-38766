@@ -12,18 +12,6 @@ class CommentsController < ApplicationController
       format.html { redirect_to drink_path(params[:drink_id]) }
       format.json
     end
-    # if comment.save
-
-    # @drinks = Drink.find(params[:drink_id])
-    # @comment = Comment.new
-
-    #   # redirect_to "/drinks/#{@comment.drink.id}"
-    #   render :drink_comments
-    # else
-    #   @drink = @comment.drink
-      # @comments = @drink.comments
-      # render "drinks/show"
-    # end
   end
 
   def destroy
